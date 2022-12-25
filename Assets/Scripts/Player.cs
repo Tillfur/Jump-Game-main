@@ -20,10 +20,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && this.rigid2D.velocity.y == 0)
         {
-            animator.SetTrigger("JumpTrigger");
-            rigid2D.AddForce(transform.up * jumpForce);
+            this.rigid2D.AddForce(transform.up * this.jumpForce);
         }
         int key = 0;
         if (Input.GetKey(KeyCode.RightArrow)) key = 1;
@@ -47,7 +46,10 @@ public class Player : MonoBehaviour
         {
             animator.speed = 1.0f;
         }
-        
+        if (transform.position.y < -10) 
+        {
+            SceneManager.LoadScene("GameScene");
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
