@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rigid2D;
     Animator animator;
-    public float jumpForce = 680.0f;
-    public float walkForce = 30.0f;
+    public float jumpForce = 350.0f;
+    public float walkForce = 5.0f;
     public float maxWalkSpeed = 2.0f;
     // Start is called before the first frame update
     void Start()
@@ -46,13 +46,13 @@ public class Player : MonoBehaviour
         {
             animator.speed = 1.0f;
         }
-        if (transform.position.y < -10) 
+        if (transform.position.y < -10)
         {
             SceneManager.LoadScene("GameScene");
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene("ClearScene");
+        //SceneManager.LoadScene("ClearScene");
     }
 }
