@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rigid2D;
     Animator animator;
+    public GameObject gameManager;
     public float jumpForce = 350.0f;
     public float walkForce = 5.0f;
     public float maxWalkSpeed = 2.0f;
@@ -54,5 +55,12 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //SceneManager.LoadScene("ClearScene");
+        if (collision.tag == "ArrowPrefab")
+        {
+            gameManager.GetComponent<GameManager>().DecreaseHp(); // ¦©¦å
+        }
+        else if (collision.tag == "Flag")
+            SceneManager.LoadScene("ClearScene");
     }
+
 }
